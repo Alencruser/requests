@@ -2,9 +2,19 @@
 $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Toulouse&appid=b4e6e981525f7f9d85df112d8f2209ce&units=metric',
 	function(data){
 	$('#meteo').html("La température actuelle de Toulouse est de "+data.main.temp+"°C"+"<br/>"+"Descriptions : "+data.weather[0].description)
-	switch(data.weather[0].description){
-		case "broken clouds":
-		$('#temps').attr('src','https://images.freeimages.com/images/large-previews/e83/broken-clouds-1537880.jpg');
+	switch(data.weather[0].main){
+		case "Drizzle":
+		case "Rain":
+		$('#temps').attr('src','https://images8.alphacoders.com/368/368780.jpg');
+		break;
+		case"Clouds":
+		$('#temps').attr('src','http://aaj.tv/wp-content/uploads/2015/10/partly-cloudy.jpg');
+		break;
+		case "Clear":
+		$('#temps').attr('src','http://www.clipartsuggest.com/images/445/blue-sky-ash-s-machiavellian-bloggery-tHG5ib-clipart.jpg')
+		break;
+		default:
+		$('#temps').attr('src','')
 		break;
 	}
 })
